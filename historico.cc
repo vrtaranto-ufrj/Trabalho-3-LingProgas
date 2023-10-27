@@ -7,7 +7,7 @@ Historico::Historico( size_t max_disciplinas ) {
 ostream& operator<<( ostream& os, const Historico& historico ) {
     for ( size_t i = 0; i < historico.disciplinas.size(); i++ ) {
         
-        os << historico.disciplinas[i];
+        os << historico.disciplinas[i] << endl;
     }
     return os;
 }
@@ -28,7 +28,6 @@ int Historico::operator+=( const Disciplina& disciplina ) {
             cout << "Disciplina ja cursada" << endl;
             return -1;
         }
-
         if ( disciplina < disciplinas[i] ) {
             disciplinas.insert( disciplinas.begin() + i, disciplina );
             return i;
@@ -40,14 +39,8 @@ int Historico::operator+=( const Disciplina& disciplina ) {
                 return i;
             }
         }
-
-        else {
-            disciplinas.push_back( disciplina );
-            return disciplinas.size() - 1;
-        }
         
     }
-    
-
-
+    disciplinas.push_back( disciplina );
+    return disciplinas.size() - 1;
 }
