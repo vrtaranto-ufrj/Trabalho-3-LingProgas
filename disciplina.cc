@@ -1,5 +1,6 @@
 #include "disciplina.hh"
-#include <limits>
+#include <cstdlib>
+
 
 Disciplina::Disciplina(string nome, string periodo, int creditos, double nota) {
     this->nome = nome;
@@ -21,10 +22,10 @@ istream& operator>>( istream& is, Disciplina& disciplina ) {
     getline( is, disciplina.periodo );
     cout << "Creditos: ";
     getline( is, auxiliar );
-    disciplina.creditos = stoi( auxiliar );
+    disciplina.creditos = atoi( auxiliar.c_str() );
     cout << "Nota: ";
     getline(is, auxiliar );
-    disciplina.nota = stod( auxiliar );
+    disciplina.nota = atof( auxiliar.c_str() );
     
     return is;
 }

@@ -1,6 +1,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <cstdlib>
 
 #include "historico.hh"
 #include "disciplina.hh"
@@ -24,7 +25,7 @@ int main() {
         cout << "6 - Cálculo do CRA" << endl;
         cout << "0 - Sair" << endl;
         getline(cin, nome);
-        opcao = stoi(nome);
+        opcao = atoi(nome.c_str());
 
         switch (opcao) {
             case 1: {
@@ -62,7 +63,7 @@ int main() {
                 getline( cin, nome );
                 cout << "Digite a nova nota da disciplina: ";
                 getline( cin, auxiliar );
-                nota = stod( auxiliar );
+                nota = atof( auxiliar.c_str() );
                 historico( nome, nota );
                 break;
             }
