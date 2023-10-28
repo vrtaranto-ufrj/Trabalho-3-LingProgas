@@ -1,4 +1,5 @@
 #include "disciplina.hh"
+#include <limits>
 
 Disciplina::Disciplina(string nome, string periodo, int creditos, double nota) {
     this->nome = nome;
@@ -8,19 +9,22 @@ Disciplina::Disciplina(string nome, string periodo, int creditos, double nota) {
 }
 
 ostream& operator<<( ostream& os, const Disciplina& disciplina ) {
-    os << disciplina.nome;
+    os << disciplina.nome << " - " << disciplina.periodo << " - " << disciplina.creditos << " - " << disciplina.nota;
     return os;
 }
 
 istream& operator>>( istream& is, Disciplina& disciplina ) {
+    string auxiliar;
     cout << "Nome: ";
-    is >> disciplina.nome;
+    getline( is, disciplina.nome );
     cout << "Periodo: ";
-    is >> disciplina.periodo;
+    getline( is, disciplina.periodo );
     cout << "Creditos: ";
-    is >> disciplina.creditos;
+    getline( is, auxiliar );
+    disciplina.creditos = stoi( auxiliar );
     cout << "Nota: ";
-    is >> disciplina.nota;
+    getline(is, auxiliar );
+    disciplina.nota = stod( auxiliar );
     
     return is;
 }
